@@ -21,8 +21,8 @@ export default function FirstPage(props: object){
               defaultValue={lname}
               onChangeText={t => setLName(t)}></TextInput>
               <View style={styles.buttonsContainer}>
-            <Button onPress={()=>{onClick()}} title='Login'></Button>
-            <Button onPress={()=>{onClick()}} title='Cancel'></Button>
+                <Button onPress={()=>{onClick()}} title='Login'></Button>
+                <Button onPress={()=>{onClick()}} title='Cancel'></Button>
             </View>
           </View>
         </ScrollView>
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     container: {
       backgroundColor: '#FF5733',
         padding:10,
-        color:'#581845'
+        color:'#581845',
     },
     label:{
         color: '#DAF7A6',

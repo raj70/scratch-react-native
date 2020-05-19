@@ -31,16 +31,15 @@ const styles = StyleSheet.create({
     alignItems:'stretch'
   },
   header:{
+    paddingTop:40,
+    flex:1,
+       
   },
   main:{
     flex:4,
-    alignItems: 'stretch',
   },
   footer:{
     flex:1,
-    flexDirection: 'column',
-    alignItems: 'stretch',
     justifyContent: 'flex-end'
   }
-
 })

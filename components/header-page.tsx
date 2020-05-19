@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     },
     menu:{
         flexDirection:'row',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
         alignItems: 'center',
         paddingLeft:5,
     }
