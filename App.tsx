@@ -1,23 +1,40 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import FirstPage from './components/first-page';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import LoginScreen from './components/first-page';
 import FooterPage from './components/footer-page';
 import HeaderPage from './components/header-page';
 
+
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import HomeScreen from './components/home-screen';
+
+const Stack = createStackNavigator();
+
 export default function App() {
-  return (
-    <View style={styles.app}>
-      <View style={styles.header}>
-        <HeaderPage></HeaderPage>
-      </View>
-      <View style={styles.main}>
-        <FirstPage name='rajen shrestha'/>
-      </View>
-      <View style={styles.footer}>
-        <FooterPage></FooterPage>
-      </View>
-    </View>
-  );
+
+  return (    
+      <View style={styles.app}>
+            <NavigationContainer> 
+              <Stack.Navigator>        
+                <Stack.Screen name="Home"
+
+                  component={HomeScreen} 
+                  initialParams={{footer: styles.footer, main: styles.main }}
+                  options={{ title: 'Welcome'
+                  // ,headerRight: ({navigation}) => (
+                  //   <Button title='Login' onPress={() => {navigation.navigate('Login')}}></Button>
+                  //) 
+                  }}/>
+                <Stack.Screen name="Login" 
+                  component={LoginScreen} 
+                  initialParams={{footer: styles.footer, main: styles.main }}
+                  options={{ title: 'Login'}} />    
+              </Stack.Navigator>   
+            </NavigationContainer>                    
+      </View> );
 }
 
 
@@ -28,18 +45,17 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems:'stretch'
-  },
-  header:{
-    paddingTop:40,
-    flex:1,
-       
+    alignItems:'stretch',
   },
   main:{
-    flex:4,
-  },
+    flex:5, 
+    justifyContent: 'center'
+  } ,
   footer:{
+    backgroundColor: '#f0f8ff',
     flex:1,
-    justifyContent: 'flex-end'
-  }
+    width: '100%',
+    alignItems: 'flex-start',
+    justifyContent: 'center'
+}
 })

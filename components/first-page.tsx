@@ -1,42 +1,55 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
-export default function FirstPage(props: object){
+export default function LoginScreen(props: object){
     const[fname, setFName] = useState('');
     const[lname, setLName] = useState('');
 
-     function onClick(){
-         alert (`Hi Mate: ${lname}, ${fname}`);
-     }
+    const {footer, main} = props.route.params;
+
+    function goHome(){
+      props.navigation.navigate('Home');
+    }
+
+    function onClick(){
+        alert (`Hi Mate: ${lname}, ${fname}`);
+    }
     return (
-        <ScrollView>  
-          <View style={styles.container}>
-            <Text>This is my first app from React-Native</Text>
-              <Text style={styles.label}>Enter username:</Text>
-            <TextInput style={styles.textBox} 
-              defaultValue={fname} 
-              onChangeText={t => setFName(t)}></TextInput>
-              <Text style={styles.label}>Enter password:</Text>
-              <TextInput style={styles.textBox} 
-              defaultValue={lname}
-              onChangeText={t => setLName(t)}></TextInput>
-              <View style={styles.buttonsContainer}>
-                <Button onPress={()=>{onClick()}} title='Login'></Button>
-                <Button onPress={()=>{onClick()}} title='Cancel'></Button>
-            </View>
+      <View style={styles.container}>
+        <View style={main}>
+          <Text>This is my first app from React-Native</Text>
+          <Text style={styles.label}>Username:</Text>
+               
+          <TextInput style={styles.textBox} 
+            defaultValue={fname} 
+            onChangeText={t => setFName(t)}></TextInput>
+                
+          <Text style={styles.label}>Password:</Text>
+               
+          <TextInput style={styles.textBox} 
+            defaultValue={lname}
+            onChangeText={t => setLName(t)}></TextInput>
+                
+          <View style={styles.buttonsContainer}>
+            <Button onPress={()=>{onClick()}} title='Login'></Button>
+            <Button onPress={()=>{goHome()}} title='Cancel'></Button>
           </View>
-        </ScrollView>
+        </View>
+        <View style={footer}>
+           <Button title='Home' onPress={()=> goHome()}></Button>
+        </View>
+      </View>
       ); 
 }
 
-const styles = StyleSheet.create({
-    container: {
-      backgroundColor: '#FF5733',
-        padding:10,
-        color:'#581845',
-    },
+const styles = StyleSheet.create({     
+    container:{
+      flex:1,
+      alignItems:'center',
+      backgroundColor: '#FF5733',   
+  },
     label:{
-        color: '#DAF7A6',
+        color: '#FFC300',
     },
     buttonsContainer:{
       alignItems:'center',
