@@ -10,6 +10,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from './components/home-screen';
+import CustomerScreen from './components/customer-screen';
 
 const Stack = createStackNavigator();
 
@@ -25,7 +26,11 @@ export default function App() {
                 <Stack.Screen name="Login" 
                   component={LoginScreen} 
                   initialParams={{footer: styles.footer, main: styles.main }}
-                  options={{ title: 'Login'}}  />    
+                  options={{ title: 'Login'}}  />  
+               <Stack.Screen name="Customer" 
+                  component={CustomerScreen} 
+                  initialParams={{footer: styles.footer, main: styles.main }}
+                  options={{ title: 'Customers'}}  />  
               </Stack.Navigator>   
             </NavigationContainer>                    
       </View> );
@@ -49,6 +54,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f8ff',
     flex:1,
     width: '100%',
+    flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'center'
 }
