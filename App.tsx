@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import LoginScreen from './components/first-page';
+import LoginScreen from './components/logn-screen';
 import FooterPage from './components/footer-page';
 import HeaderPage from './components/header-page';
 
@@ -14,24 +14,18 @@ import HomeScreen from './components/home-screen';
 const Stack = createStackNavigator();
 
 export default function App() {
-
   return (    
       <View style={styles.app}>
             <NavigationContainer> 
               <Stack.Navigator>        
                 <Stack.Screen name="Home"
-
                   component={HomeScreen} 
                   initialParams={{footer: styles.footer, main: styles.main }}
-                  options={{ title: 'Welcome'
-                  // ,headerRight: ({navigation}) => (
-                  //   <Button title='Login' onPress={() => {navigation.navigate('Login')}}></Button>
-                  //) 
-                  }}/>
+                  options={{ title: 'Welcome' }}/>
                 <Stack.Screen name="Login" 
                   component={LoginScreen} 
                   initialParams={{footer: styles.footer, main: styles.main }}
-                  options={{ title: 'Login'}} />    
+                  options={{ title: 'Login'}}  />    
               </Stack.Navigator>   
             </NavigationContainer>                    
       </View> );

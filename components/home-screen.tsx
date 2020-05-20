@@ -1,10 +1,13 @@
-import React from 'react';
-import { ScrollView, StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 
 export default function HomeScreen(props){
 
+    const [islogin, setLogin] = useState(false);
     const {footer, main} = props.route.params;
+
+    props.navigation
 
     return(
         <View style={styles.container}>
@@ -13,7 +16,7 @@ export default function HomeScreen(props){
                 <Text>🏡</Text>
             </View>
             <View style={footer}>
-                <Button title='Login' onPress={()=> props.navigation.navigate('Login')}></Button>
+                <Button title='Login'  disabled={islogin} onPress={()=> props.navigation.navigate('Login', {setLogin})}></Button>                
             </View>
         </View>
     );
